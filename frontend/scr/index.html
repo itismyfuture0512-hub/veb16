@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Менеджер задач — To-Do (вариант 16)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>📋 Менеджер задач (To-Do)</h1>
+      <p class="subtitle">Вариант 16 — сервис приоритезации и расчёта сроков задач</p>
+    </div>
+    <div class="stack">
+      <span class="badge">Frontend</span>
+      <span class="badge">Backend</span>
+      <span class="badge">PostgreSQL</span>
+      <span class="badge">Web-service</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Действия</h2>
+      <div class="actions">
+        <button id="btn-load" class="btn btn-primary">1️⃣ Показать задачи из БД</button>
+        <button id="btn-prioritize" class="btn btn-accent">2️⃣ Рассчитать приоритеты и сроки</button>
+        <span id="status" class="status"></span>
+      </div>
+    </section>
+
+    <section class="panel" id="summary-panel" hidden>
+      <h2>Результат работы web-service</h2>
+      <div class="cards" id="summary-cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Новая задача</h2>
+      <form id="task-form" class="form">
+        <input id="f-title" type="text" placeholder="Название задачи" required maxlength="200">
+        <input id="f-desc" type="text" placeholder="Описание (необязательно)" maxlength="2000">
+        <label class="field">Важность
+          <input id="f-importance" type="number" min="1" max="5" value="3">
+        </label>
+        <label class="field">Срочность
+          <input id="f-urgency" type="number" min="1" max="5" value="3">
+        </label>
+        <label class="field">Часы
+          <input id="f-hours" type="number" min="0.5" step="0.5" value="2">
+        </label>
+        <button type="submit" class="btn">➕ Добавить</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Список задач и статусы их выполнения</h2>
+      <div class="table-wrap">
+        <table id="tasks-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Задача</th>
+              <th title="Важность / Срочность">В / С</th>
+              <th>Часы</th>
+              <th>Приоритет</th>
+              <th>Срок</th>
+              <th>Статус</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tasks-body">
+            <tr><td colspan="8" class="empty">Нажмите «Показать задачи из БД»</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
